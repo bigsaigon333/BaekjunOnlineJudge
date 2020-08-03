@@ -8,21 +8,17 @@ const dat = new Array(MX).fill(0);
 const pre = new Array(MX).fill(-1);
 const nxt = new Array(MX).fill(-1);
 let unused = 1;
-nxt[0] = 1;
 
+let cur = 0;
 for (let i = 0; i < text.length; i++) {
-	dat[i + 1] = text[i];
-	pre[i + 1] = i;
-	nxt[i + 1] = i + 2;
+	insert(cur, text[i]);
+	cur++;
 }
-nxt[text.length] = -1;
-unused = text.length + 1;
 
 // console.log(dat.slice(0, text.length + 1));
 // console.log(pre.slice(0, text.length + 1));
 // console.log(nxt.slice(0, text.length + 1));
 
-let cur = text.length;
 for (let i = 0; i < N; i++) {
 	let line = input[i + 2].split(" ");
 	let operator = line[0];
@@ -37,12 +33,14 @@ for (let i = 0; i < N; i++) {
 			if (nxt[cur] !== -1) cur = nxt[cur];
 			break;
 		case "B":
-			erase(cur);
-			if (pre[cur] !== -1) cur = pre[cur];
+			if (pre[cur] !== -1) {
+				erase(cur);
+				cur = pre[cur];
+			}
 			break;
 		case "P":
 			insert(cur, operand);
-			if (nxt[cur] !== -1) cur = nxt[cur];
+			cur = nxt[cur];
 			break;
 	}
 	// traverse();
@@ -62,8 +60,9 @@ function erase(addr) {
 	//앞의 원소
 	nxt[pre[addr]] = nxt[addr];
 	//뒤의 원소
-	if (nxt[addr] === -1) pre[nxt[addr]] = pre[addr];
-	return;
+	if (nxt[addr] !== -1) {
+		pre[nxt[addr]] = pre[addr];
+	}
 }
 
 function insert(addr, val) {
@@ -73,7 +72,7 @@ function insert(addr, val) {
 	nxt[unused] = nxt[addr];
 
 	//뒤의 원소와 연결
-	if (nxt[addr] === -1) {
+	if (nxt[addr] !== -1) {
 		pre[nxt[addr]] = unused;
 	}
 	//앞의 원소와 연결
