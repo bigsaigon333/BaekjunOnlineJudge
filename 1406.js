@@ -50,10 +50,12 @@ traverse();
 
 function traverse() {
 	// process.stdout.write(cur + " ");
+	let ret = "";
 	for (let i = nxt[0]; i !== -1; i = nxt[i]) {
-		process.stdout.write(dat[i]);
+		ret += dat[i];
+		// process.stdout.write(dat[i]);
 	}
-	console.log("");
+	console.log(ret);
 }
 
 function erase(addr) {
