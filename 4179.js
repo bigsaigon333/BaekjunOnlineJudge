@@ -3,6 +3,7 @@ try: 1h 00m 07s >> 겨우 통과
 comments
 1. maze를 q validation 할때 적절히 활용하자. 
 2. dist(fire, escape)의 초기값은 -1로 해두는게 마음 편하다.
+3. dist는 거리라는 걸 명심해라. 그러면 초기값을 -1로 하는게 마음이 편하다. 다만,  while 문 내 continue 할때 maze를 충분히 할용해라
   */
 
 const input = require("fs")
