@@ -72,3 +72,7 @@ compareFunction(a, b) must always return the same value when given a specific pa
 - 시간복잡도
   - 인접행렬: O(V^2)
   - 인접리스트: O(V+E)
+  
+# 문자열
+  ## 문자열 기초
+  ![문자열 기초 용어](https://t1.daumcdn.net/cfile/tistory/99DE9E505D18D40F24)
