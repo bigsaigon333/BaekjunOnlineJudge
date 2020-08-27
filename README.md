@@ -76,3 +76,25 @@ compareFunction(a, b) must always return the same value when given a specific pa
 # 문자열
   ## 문자열 기초
   ![문자열 기초 용어](https://t1.daumcdn.net/cfile/tistory/99DE9E505D18D40F24)
+  
+  
+# 트리
+  ## 트리의 정의
+  ![트리의 정의](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBfHIy%2FbtqAM31T5Z6%2F9AlwK5RjwbDsbQkvwaRyb0%2Fimg.png)
+  
+  ![트리의 다양한 예시](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbciYQq%2FbtqAM31T5US%2F50HRMmKPGKapAqkiuDWwj1%2Fimg.png)
+  - 트리의 정의 상으로는 계층과 관계된 것이 없으며, 또 정점이 1개이고 간선이 없는 그래프도 트리임에 유의.
+  
+  ## 트리의 성질
+  - V개의 정점을 가진 트리는 V-1V−1개의 간선을 가지고 있다
+  - 임의의 두 점을 연결하는 simple path가 유일하다
+  
+  ## 트리에서의 BFS
+  ![트리에서의 BFS 예시](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FLj8N4%2FbtqAKwdjTdi%2FDkTbf63UHkyAkY2rqAU8UK%2Fimg.png)
+  - 트리의 BFS에서는 살짝 독특한 점이 있는데, 루트가 아닌 아무 정점이나 잡고 생각을 해보면 인접한 정점들 중에 자신의 부모를 제외하고는 전부 자신의 자식이라 아직 방문하지 않았음이 보장됨
+  - 예를 들어 6번 정점을 볼 때를 생각해보면, 6번 정점은 4, 7, 8번 정점과 연결되어 있음. 4번 정점은 부모이고 또 6번 정점보다 위에 있으니 이미 이전에 방문했을 것이고 7, 8번 정점은 큐에 넣으면 됨.
+  - 즉 트리에서는 BFS의 과정 속에서 자신의 자식들을 전부 큐에 넣어주기만 하면 됨. 이 말은 곧 자신과 이웃한 정점들에 대해 부모만 빼고 나머지는 전부 큐에 넣으면 됨을 의미하고, 그렇기 때문에 vis 배열을 들고갈 필요가 없이 그냥 부모가 누구인지만 저장하고 있으면 됨.
+
+ 
+
+부모의 정보는 BFS를 돌리면서 자식 정점을 큐에 집어넣을 때 채워줄 수 있습니다. 다음 장의 코드를 보면서 이해해봅시다.
