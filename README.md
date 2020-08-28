@@ -94,7 +94,31 @@ compareFunction(a, b) must always return the same value when given a specific pa
   - 트리의 BFS에서는 살짝 독특한 점이 있는데, 루트가 아닌 아무 정점이나 잡고 생각을 해보면 인접한 정점들 중에 자신의 부모를 제외하고는 전부 자신의 자식이라 아직 방문하지 않았음이 보장됨
   - 예를 들어 6번 정점을 볼 때를 생각해보면, 6번 정점은 4, 7, 8번 정점과 연결되어 있음. 4번 정점은 부모이고 또 6번 정점보다 위에 있으니 이미 이전에 방문했을 것이고 7, 8번 정점은 큐에 넣으면 됨.
   - 즉 트리에서는 BFS의 과정 속에서 자신의 자식들을 전부 큐에 넣어주기만 하면 됨. 이 말은 곧 자신과 이웃한 정점들에 대해 부모만 빼고 나머지는 전부 큐에 넣으면 됨을 의미하고, 그렇기 때문에 vis 배열을 들고갈 필요가 없이 그냥 부모가 누구인지만 저장하고 있으면 됨.
+  - 부모의 정보는 BFS를 돌리면서 자식 정점을 큐에 집어넣을 때 채워줄 수 있습니다.
+ 
+ 
+# 위상 정렬(Topological Sort)
+
+## 정의: 방향 그래프에서 간선으로 주어진 정점 간 선후관계를 위배하지 않도록 나열하는 정렬
+![위상 정렬의 정의](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzvvBJ%2FbtqBkp4fhQu%2F23yVksLRU7ZkMUQ9yt9Ib1%2Fimg.png)
+- 그림에서 ABCDEF, ACEDBF, BADCEF, BADFCE 등이 전부 올바른 위상 정렬
+
+## 구현: 매 순간마다 들어오는 간선이 없는 정점을 제거함으로서 위상 정렬을 구현할 수 있음
+![위상 정렬 구현의 편의를 위한 성질](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcwH4kM%2FbtqBj6DSvEa%2FwN5QMxfr9nTeORXFy9h0k1%2Fimg.png)
+
+![위상 정렬 구현 알고리즘](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqHPRm%2FbtqBg8wAsEj%2FczDMOxfFCpM5KnyxJOvO8K%2Fimg.png)
+
+### 사이클이 존재하지 않는 방향 그래프에서 해당 알고리즘이 늘 올바른 위상 정렬 결과를 내어준다
+ - 소개한 알고리즘으로 진행을 한다면 사이클에 포함된 정점은 절대 큐에 들어갈 수가 없게 됨.
+ - 이 말은 큐가 비어 알고리즘이 종료되었을 때 위상 정렬 결과에 모든 정점이 있지 않다는 얘기
+ - 그러므로 주어진 방향 그래프에 사이클이 있는지 혹은 없는지 여부를 모르더라도 일단 이 알고리즘을 돌리고 나면 
+ 위상 정렬 결과에 모든 정점이 포함되어있는지 여부를 확인함으로서 사이클이 있는지 없는지를 확인할 수 있고, 사이클이 없다면 위상 정렬의 결과까지 얻을 수 있음.
+
+### 시간복잡도: O(V+E)
+ - 각 정점은 큐에 최대 1번 들어가고 indegree를 감소시키는 연산은 각 간선에 대해 딱 1번씩만 발생하기 때문에 시간복잡도는 O(V+E)
+ - 그래프에서의 BFS/DFS가 O(V+E)O(V+E)인 것과 비슷한 맥락
+ 
+## 문제에서 원소 간의 선후 관계가 주어지고 순서를 정해야 하는 상황: 상 정렬을 떠올려 해결해보자.
+- 코딩테스트에서 그다지 많이 나오지 않는 유형이지만 구현이 그다지 어렵지 않은 편임(だそうです)
 
  
-
-부모의 정보는 BFS를 돌리면서 자식 정점을 큐에 집어넣을 때 채워줄 수 있습니다. 다음 장의 코드를 보면서 이해해봅시다.
