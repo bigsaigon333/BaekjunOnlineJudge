@@ -122,3 +122,38 @@ compareFunction(a, b) must always return the same value when given a specific pa
 - 코딩테스트에서 그다지 많이 나오지 않는 유형이지만 구현이 그다지 어렵지 않은 편임(だそうです)
 
  
+ 
+# 최소 신장 트리(Minimum Spanning Tree)
+
+## 신장 트리의 정의
+![신장 트리의 예시](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJeAtu%2FbtqBujKS14h%2FFFpRYHaiWxrMPpn5ErHfm0%2Fimg.png " 오른쪽 그래프는 왼쪽 그래프의 신장 트리")
+- 신장 트리: 주어진 방향성이 없는 그래프의 서브그래프(Subgraph)들 중에서 모든 정점을 포함하는 트리
+  - 서브그래프: 주어진 그래프에서 일부 정점과 간선만을 택해서 구성한 새로운 그래프를 의미
+- 주어진 그래프의 정점이 V개일 때 신장 트리는 V-1개의 간선을 가지고 있음
+- 주어진 그래프가 연결 그래프일 때만 신장 트리가 존재함
+
+![신장 트리의 반례] (https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcOLeXQ%2FbtqByGERsck%2FDUSXrOYBdtkVU4ZkvKEgMk%2Fimg.png "오른쪽 그래프는 모두 왼쪽 그래프의 신장 트리에 해당하지 않는다")
+  * 첫 번째 그래프는 가운데 정점이 연결되지 않아 연결그래프여야 한다는 트리의 조건이 위배되어 신장 트리가 아님
+  * 두, 세 번째 그래프는 사이클이 존재하기 때문에 신장 트리가 아님 
+  * 네 번째 그래프는 원래 그래프에 없던 간선이 등장해서 아예 서브그래프가 아니기 때문에 신장 트리가 아님
+
+## 최소 신장 트리의 정의:  신장 트리 중에서 간선의 합이 최소인 트리
+![최소 신장 트리 예시](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbyx4fp%2FbtqBuQVLng1%2FHUDDmuvShZC2ku0RCaCDKk%2Fimg.png)
+
+- 최소 신장 트리는 동일한 그래프에서 딱 한 개로 정해지지 않고 여러 개일 수 있음.(첫번째 그래프, 세번째 그래프)
+
+
+## 크루스칼 알고리즘
+![크루스칼 알고리즘](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGNVjT%2FbtqBuatQI2j%2F0dkAdsv4AcbGIm26wmwLdK%2Fimg.png)
+ 
+- 크루스칼 알고리즘은 그냥 사이클을 만들어내지 않는 선에서 비용이 작은 간선부터 최소 신장 트리에 편입시키는 그리디 알고리즘임
+  (알고리즘의 정당성이 직관적으로 와닿지 않지만 증명은 생략)
+ 
+## 프림 알고리즘
+![프림 알고리즘](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fw70gD%2FbtqBukwgIkg%2FYLDZ1JN6LrZjqKdHWkyQx1%2Fimg.png)
+- 크루스칼 알고리즘이 가장 비용이 낮은 간선부터 시작해 서로 떨어져 있던 정점들을 합쳐나가며 총 V-1개의 간선을 택하는 알고리즘이었다면, 
+프림 알고리즘은 한 정점에서 시작해 확장해나가는 알고리즘.
+
+
+### 프림 알고리즘 구현
+![프림 알고리즘 구현 방법] (https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbamPPO%2FbtqBt99zmmq%2Fmi98XPzt4Owcg4rjRwTsc0%2Fimg.png)
