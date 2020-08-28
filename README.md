@@ -133,7 +133,7 @@ compareFunction(a, b) must always return the same value when given a specific pa
 - 주어진 그래프의 정점이 V개일 때 신장 트리는 V-1개의 간선을 가지고 있음
 - 주어진 그래프가 연결 그래프일 때만 신장 트리가 존재함
 
-![신장 트리의 반례] (https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcOLeXQ%2FbtqByGERsck%2FDUSXrOYBdtkVU4ZkvKEgMk%2Fimg.png)
+![신장 트리의 반례](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcOLeXQ%2FbtqByGERsck%2FDUSXrOYBdtkVU4ZkvKEgMk%2Fimg.png)
   * "오른쪽 그래프는 모두 왼쪽 그래프의 신장 트리에 해당하지 않는다"
   * 첫 번째 그래프는 가운데 정점이 연결되지 않아 연결그래프여야 한다는 트리의 조건이 위배되어 신장 트리가 아님
   * 두, 세 번째 그래프는 사이클이 존재하기 때문에 신장 트리가 아님 
@@ -158,7 +158,7 @@ compareFunction(a, b) must always return the same value when given a specific pa
 
 
 ### 프림 알고리즘 구현
-![프림 알고리즘 구현 방법] (https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbamPPO%2FbtqBt99zmmq%2Fmi98XPzt4Owcg4rjRwTsc0%2Fimg.png)
+![프림 알고리즘 구현 방법](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbamPPO%2FbtqBt99zmmq%2Fmi98XPzt4Owcg4rjRwTsc0%2Fimg.png)
 
 
 ## 코딩테스트에서 최소 신장 트리 관련 문제가 나온다면 구현도 문제지만 "이 문제에서 요구하는 것이 최소 신장 트리이구나"를 잘 캐치하는 것이 더 중요!!
