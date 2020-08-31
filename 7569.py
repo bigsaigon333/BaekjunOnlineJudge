@@ -1,5 +1,12 @@
 """ 
-Python에서 시간초과가 나지 않기 위해 주의해야 할 점
+Date: 2020-08-30 Sun
+1st try: 1h 30m 18s >> 통과
+Comment: 런타임 에러, 시간 초과 등으로 당황했다.
+런타임 에러는 Z가 들어가야 할 곳에 X를 넣어서 발생한 것이었다. 휴
+시간 초과는 input() 사용때문이었던 것 같다. pypy3 로 통과하긴 하였다.
+아래와 같이 주의점 기재
+
+- Python에서 시간초과가 나지 않기 위해 주의해야 할 점- 
 1. input() 말고 sys.stdin.readline() 으로 한 줄의 문자열을 받아오자 (import sys 필수)
 2. queue, stack, deque 는 deque 를 사용하자. deque 사용시 O(1) 으로, 입출력 가능. (list 사용 금지: https://wiki.python.org/moin/TimeComplexity
 ) 
@@ -12,6 +19,7 @@ Python에서 시간초과가 나지 않기 위해 주의해야 할 점
 ※ PyPy에서는 sys.setrecursionlimit(10**8) 이 안먹는다. 즉 임의로 재귀 호출 깊이를 설정할 수 없다는 것에 주의
 
 6. 파이썬(Python) Tips and Tricks
+https://deepwelloper.tistory.com/69
 https://deepwelloper.tistory.com/87
 
  """
