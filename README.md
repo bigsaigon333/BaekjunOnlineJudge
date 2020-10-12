@@ -209,4 +209,16 @@ compareFunction(a, b) must always return the same value when given a specific pa
 
 
 
+# 9466.js
 
+1. Comment: nodeJS에서 call-stack size를 늘리기 위해서는 --stack-size=val 옵션을 사용한다<br>
+ex) node --stack-size=1000000 "file명.js"<br>
+그러나 내 환경에서는 12000정도까지가 한계인듯<br>
+
+2. node --v8-options을 통하여 command line options을 확인할 수 있다.<br>
+https://nodejs.org/dist/latest-v12.x/docs/api/cli.html#cli_node_options_options <br>
+NODE_OPTIONS="..." 을 통하여 runtime에서도 v8 options을 설정할 수 있는 것으로 보여지나, 실제로 작동되는지는 확인하지 못함<br>
+ex) NODE_OPTIONS = "--stack-size=100000000"; 을 9466.js 파일내 최상단에 기재하였으나, 기재여부와 상관없이 11307번까지 밖에 수행되지 아니함을 확인함
+
+3. F/U사항: 재귀가 아닌 stack으로 DFS구현하는 방법 검토<br>
+   - fin(idx)를 어떻게 설정할 것인지?
